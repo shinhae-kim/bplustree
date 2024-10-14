@@ -439,10 +439,10 @@ public class BPlusTreeTest {
     @Test
     public void testTreeOnAllPermutationsOfNonRepeatedInput() throws Exception {
         for (int maxKeys = 2; maxKeys <= 5; maxKeys++) {
-            System.out.println("[Outer Loop] maxKeys: " + maxKeys)
+            System.out.println("[Outer Loop] maxKeys: " + maxKeys);
             int mk = maxKeys;
             for (int i = 5; i <= 5; i++) {
-                System.out.println("[Inner Loop] i: " + i)
+                System.out.println("[Inner Loop] i: " + i);
                 List<Integer> expected = new ArrayList<>();
                 for (int j = 0; j < i; j++) {
                     expected.add(j);
@@ -454,7 +454,7 @@ public class BPlusTreeTest {
                             tree.insert(v, v);
                         }
                         // assertEquals(0, (int) tree.firstLeaf(tree.root()).key(0));
-  			System.out.println("Calling assertEquals...")
+  			System.out.println("Calling assertEquals...");
                         assertEquals(expected, Stream.from(tree.findAll()).toList().get());
                     }
                 }).forEach();

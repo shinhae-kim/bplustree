@@ -439,18 +439,22 @@ public class BPlusTreeTest {
     @Test
     public void testTreeOnAllPermutationsOfNonRepeatedInput() throws Exception {
         for (int maxKeys = 2; maxKeys <= 5; maxKeys++) {
+            System.out.println("[Outer Loop] maxKeys: " + maxKeys)
             int mk = maxKeys;
             for (int i = 5; i <= 5; i++) {
+                System.out.println("[Inner Loop] i: " + i)
                 List<Integer> expected = new ArrayList<>();
                 for (int j = 0; j < i; j++) {
                     expected.add(j);
                 }
                 Stream.permutations(i).doOnNext(list -> {
+                    System.out.println("[Inside doOnNext] list: " + String.join(", ", list));
                     try (BPlusTree<Integer, Integer> tree = create(mk)) {
                         for (int v : list) {
                             tree.insert(v, v);
                         }
                         // assertEquals(0, (int) tree.firstLeaf(tree.root()).key(0));
+  			System.out.println("Calling assertEquals...")
                         assertEquals(expected, Stream.from(tree.findAll()).toList().get());
                     }
                 }).forEach();

@@ -448,7 +448,7 @@ public class BPlusTreeTest {
                     expected.add(j);
                 }
                 Stream.permutations(i).doOnNext(list -> {
-                    System.out.println("[Inside doOnNext] list: " + String.join(", ", list));
+                    System.out.println("[Inside doOnNext] list: " + list.toString());
                     try (BPlusTree<Integer, Integer> tree = create(mk)) {
                         for (int v : list) {
                             tree.insert(v, v);
